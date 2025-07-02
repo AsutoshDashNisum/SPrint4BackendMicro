@@ -1,0 +1,18 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: product-service
+
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=cms_db;encrypt=true;trustServerCertificate=true
+    username: cms
+    password: Welcome@2026
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  jpa:
+    hibernate:
+      ddl-auto: none  # ✅ since your schema is already created manually in SQL Server
+    show-sql: true
+    database-platform: org.hibernate.dialect.SQLServerDialect
