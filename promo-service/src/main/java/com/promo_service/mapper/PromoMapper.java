@@ -14,6 +14,7 @@ public class PromoMapper {
         promo.setPromo_type(dto.getPromo_type());
         promo.setDescription(dto.getDescription());
         promo.setAmount(dto.getAmount());
+        promo.setStatus("Active");
         return promo;
     }
 

@@ -32,4 +32,24 @@ public class CategoryServiceImpl implements CategoryService {
                 .map(mapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public CategoryResponseDto updateCategory(Long id, CategoryRequestDto dto) {
+        Category category = categoryRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+
+        category.setCategoryName(dto.getCategoryName());
+        category.setDescription(dto.getDescription());
+
+        return mapper.toDto(categoryRepo.save(category));
+    }
+
+    @Override
+    public void deleteCategory(Long id) {
+        Category category = categoryRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+
+        category.setActive(false);
+        categoryRepo.save(category);
+    }
 }

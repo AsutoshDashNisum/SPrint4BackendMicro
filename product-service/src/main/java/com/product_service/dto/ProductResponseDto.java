@@ -9,4 +9,8 @@ public class ProductResponseDto {
     private String sku;
     private String status;
     private String categoryName;
+
+    private Integer price;
+    private Double discount;
+    private Double discountedPrice;
 }

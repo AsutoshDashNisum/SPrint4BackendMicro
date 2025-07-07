@@ -4,9 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "categories")
-@Getter
-@Setter
+@Table(name = "Categories")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Category {
@@ -17,10 +16,8 @@ public class Category {
 
     private String categoryName;
 
-    @Lob
-    private byte[] categoryImage;
-
     private String description;
 
+    @Column(nullable = false)
     private boolean active = true;
 }

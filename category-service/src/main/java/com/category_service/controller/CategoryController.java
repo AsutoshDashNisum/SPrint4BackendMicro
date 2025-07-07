@@ -26,4 +26,18 @@ public class CategoryController {
     public ResponseEntity<List<CategoryResponseDto>> getAllActive() {
         return ResponseEntity.ok(categoryService.getAllActiveCategories());
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoryResponseDto> updateCategory(
+            @PathVariable Long id,
+            @Valid @RequestBody CategoryRequestDto dto
+    ) {
+        return ResponseEntity.ok(categoryService.updateCategory(id, dto));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
+        categoryService.deleteCategory(id);
+        return ResponseEntity.noContent().build();
+    }
 }

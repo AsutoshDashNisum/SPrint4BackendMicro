@@ -8,4 +8,7 @@ public class ProductRequestDto {
     private String sku;
     private Long categoryId;
     private String status;
+
+    private Integer price;      // ✅ NEW
+    private Double discount;    // ✅ NEW
 }

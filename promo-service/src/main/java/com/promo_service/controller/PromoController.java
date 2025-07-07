@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/promos")
 @RequiredArgsConstructor
@@ -17,17 +19,27 @@ public class PromoController {
 
     @PostMapping
     public ResponseEntity<PromoResponseDto> createPromo(@Valid @RequestBody PromoRequestDto dto) {
-        try {
-            return ResponseEntity.ok(promoService.createPromo(dto));
-        } catch (Exception e) {
-            e.printStackTrace(); // 👈 log full stack trace
-            return ResponseEntity.status(500).build();
-        }
+        return ResponseEntity.ok(promoService.createPromo(dto));
     }
 
+    @GetMapping
+    public ResponseEntity<List<PromoResponseDto>> getAllPromos() {
+        return ResponseEntity.ok(promoService.getAllPromos());
+    }
 
     @GetMapping("/{promoCode}")
     public ResponseEntity<PromoResponseDto> getPromo(@PathVariable String promoCode) {
         return ResponseEntity.ok(promoService.getPromoByCode(promoCode));
+    }
+
+    @PutMapping("/{promoCode}")
+    public ResponseEntity<PromoResponseDto> updatePromo(@PathVariable String promoCode, @RequestBody PromoRequestDto dto) {
+        return ResponseEntity.ok(promoService.updatePromo(promoCode, dto));
+    }
+
+    @DeleteMapping("/{promoCode}")
+    public ResponseEntity<Void> deletePromo(@PathVariable String promoCode) {
+        promoService.deletePromo(promoCode);
+        return ResponseEntity.noContent().build();
     }
 }

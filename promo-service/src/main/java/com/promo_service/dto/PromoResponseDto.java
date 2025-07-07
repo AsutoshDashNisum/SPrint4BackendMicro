@@ -9,4 +9,3 @@ public class PromoResponseDto {
     private String description;
     private Integer amount;
 }
-

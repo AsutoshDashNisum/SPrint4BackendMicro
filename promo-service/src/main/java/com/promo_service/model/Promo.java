@@ -3,7 +3,6 @@ package com.promo_service.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-
 @Entity
 @Table(name = "promo")
 @Getter
@@ -22,4 +21,7 @@ public class Promo {
     private String description;
 
     private Integer amount;
+
+    @Column(nullable = false)
+    private String status; // Active or Inactive
 }
